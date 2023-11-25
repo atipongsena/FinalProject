@@ -1,4 +1,5 @@
 ﻿@page
+@using Microsoft.DotNet.Scaffolding.Shared.Messaging;
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -7,28 +8,30 @@
 <center><img src="images/logo.jpg" width="400" /></center>
 
 <table class="table">
-    <thread>
+    <thead>
         <tr>
             <th>From</th>
             <th>Subject</th>
             <th>Date/Time</th>
             <th>Delete</th>
         </tr>
-    </thread>
+    </thead>
 
     <tbody>
         @foreach (var item in Model.listEmails)
         {
             <tr>
-                <td>@item.EmailSender</td>
+                <td>@item.emailsender</td>
                 <td>
-                    @if (item.EmailIsRead.Equals("0")) {
+                    @if (item.emailisread.Equals("0")) {
                         <img src="images/yellow.gif" height="10pt"> 
                     } 
-                    <a href="ReadEmail?emailid=@item.EmailID">@item.EmailSubject</a></td>
-                <td>@item.EmailDate</td>
+                    <a href="ReadEmail?emailid=@item.emailid">@item.emailsubject</a></td>
+                <td>@item.emaildate</td>
                 <td>
-                    <a class="btn btn-primary btn-sm" href="DeleteEmail?emailid=@item.EmailID">Delete</a>
+                    <form method="post" asp-page-handler="DeleteEmail" asp-route-emailid="@item.emailid">
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
                 </td>
             </tr>
         }

@@ -1,0 +1,51 @@
+﻿@page
+@model ReadEmailModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read Email</title>
+    <style>
+        .email-container {
+            background-color: #900;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .email-details {
+            background-color: #fff;
+            color: #000;
+            margin: 20px auto;
+            padding: 20px;
+            width: 70%;
+        }
+
+            .email-details p {
+                text-align: left;
+            }
+
+        .home-btn {
+            background-color: #900;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <h1>BU Email System</h1>
+        <div class="email-details">
+            <p><strong>From:</strong> @Model.Email.emailsender</p>
+            <p><strong>Subject:</strong> @Model.Email.emailsubject</p>
+            <p><strong>Message:</strong> @Model.Email.emailmessage</p>
+        </div>
+        <a class="home-btn" href="/">Home</a>
+    </div>
+</body>
+</html>

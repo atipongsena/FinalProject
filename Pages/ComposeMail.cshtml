@@ -1,0 +1,37 @@
+﻿@page
+@model FinalProject.Pages.ComposeEmailModel
+@{
+    ViewData["Title"] = "Compose Email";
+}
+
+<h2>Compose Email</h2>
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div class="alert alert-danger" role="alert">
+        @Model.ErrorMessage
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(Model.SuccessMessage))
+{
+    <div class="alert alert-success" role="alert">
+        @Model.SuccessMessage
+    </div>
+}
+
+<form method="post">
+    <div class="form-group">
+        <label for="emailreceiver">To:</label>
+        <input type="text" id="emailreceiver" name="emailreceiver" class="form-control" value="@Model.Email.EmailReceiver" required />
+    </div>
+    <div class="form-group">
+        <label for="emailsubject">Subject:</label>
+        <input type="text" id="emailsubject" name="emailsubject" class="form-control" value="@Model.Email.EmailSubject" required />
+    </div>
+    <div class="form-group">
+        <label for="emailmessage">Message:</label>
+        <textarea id="emailmessage" name="emailmessage" class="form-control" rows="5" required>@Model.Email.EmailMessage</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Send</button>
+</form>
